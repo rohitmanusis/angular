@@ -1,0 +1,7 @@
+<input ng-model="field.children.name" type="text" placeholder = 'Name'/>
+<select ng-model="field.children.type" ng-options="i for i in types"></select>
+<div ng-switch on="field.type" >
+	<div ng-switch-when="Collection">
+		<div ng-include src ="'subnode.html'"></div>
+	</div>
+</div>

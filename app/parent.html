@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app = "myApp">
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/app.css">
+		<script src="lib/angular/angular.js"></script>
+		<!--	<script src="js/app.js"></script>-->
+		<script src="js/controllers.js"></script>
+	</head>
+	<body>
+		<script type="text/ng-template"  id="child.html">
+			{{data.name}}
+			<button class="btn btn-primary" ng-click="add(data)">Add node</button>
+			
+			<ul>
+			<li ng-repeat="data in data.nodes" ng-include="'child.html'"></li>
+			</ul>
+		</script>
+
+		<ul ng-app="Application" ng-controller="TreeController">
+			<li ng-repeat="data in tree" ng-include="'child.html'"></li>
+		</ul>
+
+	</body>
+</html>

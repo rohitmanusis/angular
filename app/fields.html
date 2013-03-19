@@ -1,0 +1,16 @@
+<div style="margin-left : 50px;">
+	<input ng-model="field.name" type="text" placeholder = 'Name'/>
+	<select ng-model="field.type" ng-options="i for i in types"></select>
+	<div ng-switch on="field.type" >
+		<div ng-switch-when="Collection">
+			<div ng-repeat="field in field.children">
+				<div ng-include src ="'fields.html'" ></div>
+			</div>
+			
+			<button class = "btn btn-success" ng-click="addChildren(field)">
+				Add more
+			</button>
+		</div>
+	</div>
+
+</div>
