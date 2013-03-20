@@ -12,7 +12,6 @@ function EntityCtrl($scope) {
 		fields : []
 	}];
 
-
 	$scope.add_child = function(parent_node) {
 		var id = Math.floor(Math.random() * 100000);
 		var child_node = {
@@ -47,15 +46,12 @@ function EntityCtrl($scope) {
 	$scope.check_child_length = function(child) {
 		var child_length = 0;
 		$scope.child_length = child.length;
-		console.log($scope.child_length);
 	};
 
 	$scope.delete_node = function(index, parent) {
-		console.log(parent);
 		if(!parent) {
 			parent = $scope;
 		}
-		console.log(parent.fields);
 		parent.fields.splice(index, 1);
 	};
 	
