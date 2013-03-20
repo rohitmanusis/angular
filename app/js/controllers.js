@@ -4,11 +4,13 @@
 
 function EntityCtrl($scope) {
 	$scope.types = ["Text", "Checkbox", "Radio", "Textarea", "Collection"];
-	$scope.field = {
+	$scope.field = [{
 		name : 'root',
 		type : 'Collection',
 		childs : []
-	};
+	}];
+	
+	$scope.fields = $scope.field;
 
 	$scope.add_child = function(parent_node) {
 		var child_node = {
@@ -23,6 +25,14 @@ function EntityCtrl($scope) {
 			parent_node.childs = [child_node];
 		}
 
+	};
+
+	$scope.add_parent = function(fields) {
+		fields.push({
+			name : '',
+			type : 'TEXT',
+			childs : []
+		});
 	};
 
 }

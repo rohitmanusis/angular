@@ -1,4 +1,4 @@
-<div class="node">
+<div class="node" style="margin-left: 15px;padding: 10px;">
 	<span class="node-actions">
 		<input ng-model="field.name" type="text" placeholder = 'Name'/>
 		<select ng-model="field.type" ng-options="i for i in types"></select>
@@ -7,11 +7,10 @@
 				<div class = 'subtree' ng-repeat="field in $parent.field.childs">
 					<div ng-include src ="'node.html'" ></div>
 				</div>
-
 				<button class = "btn btn-success" ng-click="add_child($parent.field)">
-					Add more
+					Add Child
 				</button>
 			</div>
-		</div> </span>
-
+		</div>
+	</span>
 </div>
