@@ -1,11 +1,12 @@
 'use strict';
 
-/* App Module */
-angular.module('phonecat', ['phonecatFilters']).
-  config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-      when('/phones', {templateUrl: 'partials/phone-list.html',   controller: PhoneListCtrl}).
-      when('/phones/:phoneId', {templateUrl: 'partials/phone-detail.html', controller: PhoneDetailCtrl}).
-      otherwise({redirectTo: '/phones'});
-}]);
+var app = angular.module("App", []);
+app.directive("justRemove", function() {
+	console.log('enter in delete');
+    return function(scope, element, attrs) {
+        element.bind("$destroy", function() {
+            console.log("element removed");
+        });
+    };
+});
 

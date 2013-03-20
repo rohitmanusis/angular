@@ -2,9 +2,11 @@
 	<span class="node-actions">
 		<input ng-model="field.name" type="text" placeholder = 'Name'/>
 		<select ng-model="field.type" ng-options="i for i in types"></select>
-		<div ng-switch on="field.type" >
+		<button class ="btn btn-danger" ng-click="delete_node($index, $parent.$parent.field)">Delete</button>
+		<!--<button class ="btn btn-danger" just-remove ng-click="justRemove($parent.field)">Delete</button>-->
+		<div ng-switch on="field.type">
 			<div ng-switch-when="Collection">
-				<div class = 'subtree' ng-repeat="field in $parent.field.childs">
+				<div class = 'subtree' ng-repeat="field in $parent.field.fields">
 					<div ng-include src ="'node.html'" ></div>
 				</div>
 				<button class = "btn btn-success" ng-click="add_child($parent.field)">
