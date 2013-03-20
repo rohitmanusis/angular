@@ -27,7 +27,7 @@ function EntityCtrl($scope) {
 
 	};
 
-	$scope.deleteChild = function(parent_node) {
+	$scope.delete_child = function(parent_node) {
 		parent_node.childs.length = 0;
 	};
 	
