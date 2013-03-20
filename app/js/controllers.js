@@ -9,7 +9,7 @@ function EntityCtrl($scope) {
 		type : 'Collection',
 		childs : []
 	}];
-	
+
 	$scope.fields = $scope.field;
 
 	$scope.add_child = function(parent_node) {
@@ -27,74 +27,16 @@ function EntityCtrl($scope) {
 
 	};
 
+	$scope.deleteChild = function(parent_node) {
+		parent_node.childs.length = 0;
+	};
+	
 	$scope.add_parent = function(fields) {
 		fields.push({
 			name : '',
 			type : 'TEXT',
 			childs : []
 		});
-	};
+	}
 
 }
-
-/*function EntityCtrl($scope) {
- var ids = [];
- for (var i = 0; i < 5; i++) {
- var id = Math.random();
- ids[i] = id;
- }
- console.log(ids);
- $scope.types = ["Text", "Checkbox", "Radio", "Textarea", "Collection"];
-
- $scope.fields = [{
- id : ids[0],
- name : '',
- type : 'Text',
- children : []
- }, {
- id : ids[1],
- name : '',
- type : 'Text',
- children : []
- }, {
- id : ids[2],
- name : '',
- type : 'Text',
- children : []
- }, {
- id : ids[3],
- name : '',
- type : 'Text',
- children : []
- }, {
- id : ids[4],
- name : '',
- type : 'Text',
- children : []
- }];
-
- $scope.addMore = function(fields) {
- id = Math.random();
- ids.push(id);
- fields.push({
- id : id,
- name : '',
- type : 'Text',
- children : []
- });
- }
-
- $scope.addChildren = function(field) {
- id = Math.random();
- ids.push(id);
- var child_node = {
- id : id,
- name : '',
- type : 'Text',
- children : []
- };
- field.children.push(child_node);
-
- }
- }
- */

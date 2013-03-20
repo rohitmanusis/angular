@@ -11,6 +11,17 @@
 					Add Child
 				</button>
 			</div>
-		</div>
-	</span>
+			<div ng-switch-when="Text">
+				<div ng-init = "deleteChild($parent.field)"></div>
+			</div>
+			<div ng-switch-when="Checkbox">
+				<div ng-init = "deleteChild($parent.field)"></div>
+			</div>
+			<div ng-switch-when="Radio">
+				<div ng-init = "deleteChild($parent.field)"></div>
+			</div>
+			<div ng-switch-when="Textarea">
+				<div ng-init = "deleteChild($parent.field)"></div>
+			</div>
+		</div> </span>
 </div>
