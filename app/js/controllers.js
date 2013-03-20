@@ -1,13 +1,4 @@
 'use strict';
-var app = angular.module("App", []);
-app.directive("justRemove", function() {
-    return function(scope, element, attrs) {
-        element.bind("$destroy", function() {
-            console.log("element removed");
-        });
-    };
-});
-
 /* Controllers */
 
 function EntityCtrl($scope) {
