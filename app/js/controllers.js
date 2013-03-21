@@ -1,6 +1,27 @@
 'use strict';
 /* Controllers */
 
+/*<form m-form='formOptions'></form>  
+formOptions is the variable we are going to bind to where we will initialize our form options.
+var formOptions = {
+	elements: [{name: 'name', type: 'text', required: true}, 
+			{name: 'dob', type: 'date'}]
+};
+
+
+template: "<form>
+	<ng-repeat>
+		<ul>
+		<li><label></label>
+		{if type ="text"}
+			use text template
+		{/if}	
+		<li>
+		</ul>
+	</ng-repeat> 
+
+</form>";
+*/
 function EntityCtrl($scope) {
 	var id = Math.floor(Math.random() * 100000);
 	$scope.types = ["Text", "Checkbox", "Radio", "Textarea", "Collection"];
