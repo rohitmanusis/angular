@@ -5,11 +5,12 @@ function EntityCtrl($scope) {
 	var id = Math.floor(Math.random() * 100000);
 	$scope.types = ["Text", "Checkbox", "Radio", "Textarea", "Collection"];
 
-	$scope.fields =[{
+	$scope.fields = [{
 		id : id,
-		name : 'root',
-		type : 'Collection',
-		fields : []
+		name : '',
+		type : 'Text',
+		fields : [],
+
 	}];
 
 	$scope.add_child = function(parent_node) {
@@ -18,7 +19,8 @@ function EntityCtrl($scope) {
 			id : id,
 			name : '',
 			type : 'TEXT',
-			fields : []
+			fields : [],
+
 		};
 
 		if (parent_node.fields) {
@@ -39,7 +41,8 @@ function EntityCtrl($scope) {
 			id : id,
 			name : '',
 			type : 'TEXT',
-			fields : []
+			fields : [],
+
 		});
 	};
 
@@ -49,10 +52,27 @@ function EntityCtrl($scope) {
 	};
 
 	$scope.delete_node = function(index, parent) {
-		if(!parent) {
-			parent = $scope;
+		var r = confirm("Warning! you're going to delete the node and its child.");
+		if (r == true) {
+			if (!parent) {
+				parent = $scope;
+			}
+			parent.fields.splice(index, 1);
 		}
-		parent.fields.splice(index, 1);
 	};
-	
+	var visible = [];
+	$scope.settings = function(index, parent) {
+		var position = visible.indexOf(index);
+		if (position === -1) {
+			visible.push(index);
+			return;
+		}
+		visible.splice(position, 1);
+		//$scope.showHide = !$scope.showHide;
+	};
+	$scope.shouldShow = function(index, parent) {
+		console.log(index);
+		return visible.indexOf(index) != -1;
+	};
+
 }

@@ -2,8 +2,28 @@
 	<span class="node-actions">
 		<input ng-model="field.name" type="text" placeholder = 'Name'/>
 		<select ng-model="field.type" ng-options="i for i in types"></select>
-		<button class ="btn btn-danger" ng-click="delete_node($index, $parent.$parent.field)">Delete</button>
-		
+		<button class ="btn btn-danger" ng-click="delete_node($index, $parent.$parent.field)">
+			Delete
+		</button>
+		<button class = "btn btn-info" ng-click="settings(field.id, $parent.$parent.field)">
+			Settings
+		</button>
+		<form style="background-color: #EEEEEE" ng-show="shouldShow(field.id, $parent.parent.field)" class="form-horizontal">
+		<!--<form style="background-color: #EEEEEE" ng-show="showHide" class="form-horizontal">-->
+			<div class="control-group">
+				<label class="control-label" for="inputFont">Font</label>
+				<div class="controls">
+					<input type="text" id="font" placeholder="Font">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="size">Size</label>
+				<div class="controls">
+					<input type="text" id="size" placeholder="Size">
+				</div>
+			</div>
+			
+		</form> <!--<div ng-hide="showHide">Hide</div>-->
 		<div ng-switch on="field.type">
 			<div ng-switch-when="Collection">
 				<div class = 'subtree' ng-repeat="field in $parent.field.fields">
