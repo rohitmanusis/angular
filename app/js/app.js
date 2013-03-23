@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mformModule',[])
-	.directive('mform',function(){
+	.directive('mform',function($templateCache){
 		return{
 			restrict : 'C',	
 			controller: function($scope, $element){
@@ -8,11 +8,14 @@ angular.module('mformModule',[])
 							{name : 'Name',type :'text',value:""},
 							{name : 'DOB',type: 'date',value:""},
 							{name : 'Gender',type: 'radio',value:""},
-							{name : 'Checkbox',type: 'checkbox',value:true},
+							{name : 'Checkbox',type: 'checkbox',value:false},
 							{name : 'Textarea', type: 'textarea',value:""}
 						];
 				$scope.submit =  function(data){
 					console.log(data);
+				}
+				$scope.check = function(){
+					console.log('enter here');
 				}
 			},
 			
@@ -20,10 +23,10 @@ angular.module('mformModule',[])
 						'<ul>'+
 						'<li ng-repeat = "field in formOptions" ng-switch on="field.type">'+
 							'{{field.name}} : <input ng-switch-default ng-model="field.value" type ="{{field.type}}"/>'+
-							
+							'<input  type ="checkbox" ng-switch-when="checkbox" ng-model="field.value" ng-change="check()"/>'+
 							'<span ng-switch-when = "radio">'+
-								'<input ng-model="field.value" name= "field.name" type ="{{field.type}}" value="male"/> Male'+
-								'<input ng-model="field.value" name= "field.name" type ="{{field.type}}" value="female"/>Female'+
+								'<input ng-model="field.value" name= "field.name" type ="radio" value="male"/> Male'+
+								'<input ng-model="field.value" name= "field.name" type ="radio" value="female"/>Female'+
 							'</span>'+
 							'<textarea ng-model = "field.value" ng-switch-when = "textarea" rows="4" cols="20" name ={{field.name}} type ="{{field.type}}">'+
 							'</textarea>'+
