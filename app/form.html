@@ -1,16 +1,29 @@
 <!doctype html>
-<html ng-app= "mformModule">
+<html ng-app= "myapp">
 	<head>
-		<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+		 <link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="lib/angular/angular.js"></script>
-		<script src="js/app.js"></script>
+		<script src="js/mform.js"></script>
 		<script src="js/controllers.js"></script>
-		
+		<script>
+			var app = angular.module("myapp", ['mForm']);
+			app.controller('myCtrl', function($scope){
+				$scope.formOptions = {
+					 elements: [
+							{name : 'Name',type :'text',value:"soemthing"},
+							{name : 'DOB',type: 'date',value:""},
+							{name : 'Gender',type: 'radio',value:""},
+							{name : 'Checkbox',type: 'checkbox',value:true, 'class': 'hidden'},
+							{name : 'Textarea', type: 'textarea',value:""}
+						]};
+			});
+		</script>
 	</head>
 	<body>
-		<div class="mform">cool</div>
-		 <input type="checkbox" checked="checked"/>
+		<div ng-controller="myCtrl">
+			<div m-form="formOptions"></div>
+		</div>
 	</body>
 	
 	
