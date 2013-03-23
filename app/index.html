@@ -4,7 +4,9 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="lib/angular/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.min.js"></script>
 		<script src="js/app.js"></script>
+		<script src= "js/mongolab.js"></script>
 		<script src="js/controllers.js"></script>
 		<style>
 			.subtree {
@@ -17,15 +19,22 @@
 		</style>
 	</head>
 	<body>
-		<h3>&nbsp;Angular JS Tree Demo</h3>
+		<h3>&nbsp;Define a new Entity</h3>
 		<div ng-controller="EntityCtrl">
-			<button style="margin: 5px;" class = "btn btn-primary" ng-click= "add_parent(fields)">
-				Add Parent
-			</button>
-			<div ng-repeat="field in fields">
-				<div ng-include src="'node.html'"></div>
+			&nbsp;Entity Name :
+			<input type="text" ng-model= "entity.name" placeholder="Entity Name"/>
+			<br/>
+			<div style="background-color: #EEEEEE">
+				<button style="margin: 5px;" class = "btn btn-primary" ng-click= "add_parent(fields)">
+					Add Parent
+				</button>
+				<div ng-repeat="field in fields">
+					<div ng-include src="'node.html'"></div>
+				</div>
+				<button style="margin: 5px;" class = "btn btn-primary" ng-click = "save_entity(entity,fields)">Save Entity</button>
 			</div>
-			<!--<pre>{{fields | json}}</pre>-->		
+			<!--<pre>Entity Name : {{entity | json}}</pre>-->
+			<!--<pre>{{fields | json}}</pre>-->
 		</div>
 	</body>
 </html>

@@ -1,37 +1,15 @@
 'use strict';
 /* Controllers */
 
-/*<form m-form='formOptions'></form>  
-formOptions is the variable we are going to bind to where we will initialize our form options.
-var formOptions = {
-	elements: [{name: 'name', type: 'text', required: true}, 
-			{name: 'dob', type: 'date'}]
-};
-
-
-template: "<form>
-	<ng-repeat>
-		<ul>
-		<li><label></label>
-		{if type ="text"}
-			use text template
-		{/if}	
-		<li>
-		</ul>
-	</ng-repeat> 
-
-</form>";
-*/
-function EntityCtrl($scope) {
+function EntityCtrl($scope, $http) {
 	var id = Math.floor(Math.random() * 100000);
 	$scope.types = ["Text", "Checkbox", "Radio", "Textarea", "Collection"];
-
+	$scope.entity = {name : ''};
 	$scope.fields = [{
 		id : id,
 		name : '',
 		type : 'Text',
 		fields : [],
-
 	}];
 
 	$scope.add_child = function(parent_node) {
@@ -92,8 +70,14 @@ function EntityCtrl($scope) {
 		//$scope.showHide = !$scope.showHide;
 	};
 	$scope.shouldShow = function(index, parent) {
-		console.log(index);
 		return visible.indexOf(index) != -1;
 	};
-
+	
+	$scope.save_entity = function(entity, data){
+		console.log('enter in to the save');
+		$http.post('http://localhost:3000/entity/' + entity + '/create', {name: entity, data: data})
+			.success(function(data) {
+				console.log(data);
+			});
+	}
 }
